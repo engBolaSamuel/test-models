@@ -1,0 +1,25 @@
+# .geminiignore - Token Protection Shield
+
+# إخفاء المجلدات الضخمة التي لا تحتوي على كود من كتابتك
+/vendor/
+/node_modules/
+/public/build/
+
+# إخفاء السجلات (Logs) لأنها متغيرة وتستهلك توكنز بشكل جنوني
+/storage/logs/
+
+# إخفاء التخزين المؤقت للمشروع (Cache) والـ Views المجمعة
+/storage/framework/cache/
+/storage/framework/views/
+/storage/framework/sessions/
+/bootstrap/cache/
+
+# إخفاء ملفات بيئة العمل المحلية أو قاعدة البيانات المحلية
+/.idea/
+/.vscode/
+/.herd/
+*.sqlite
+*.sqlite-journal
+
+# إخفاء ملفات رفع الصور أو التخزين العام (إلا إذا احتجت أن يراها المساعد لسبب محدد)
+/storage/app/public/

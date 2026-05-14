@@ -1,0 +1,3 @@
+name: test-models
+php: '8.5'
+secured: true

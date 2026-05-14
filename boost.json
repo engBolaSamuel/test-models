@@ -8,6 +8,8 @@
     "sail": false,
     "skills": [
         "laravel-best-practices",
-        "pest-testing"
+        "livewire-development",
+        "pest-testing",
+        "tailwindcss-development"
     ]
 }
