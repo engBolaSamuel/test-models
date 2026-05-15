@@ -1,0 +1,18 @@
+{
+  "title": "ISV Project Plan & Architecture",
+  "summary": "Finalized architecture, domain model design, bidirectional sync engine specification, and 5-phase execution roadmap for the Interactive Schema Visualizer (ISV) project. Covers approved decisions: new migrations (not rewrite), Laravel Breeze auth, ProjectTable naming, first-class M2M pivot support, single-schema projects, client-side Mermaid.js rendering. Stack: PHP 8.5, Laravel 13.6, Livewire 4, MariaDB, Tailwind CSS 4, Mermaid.js.",
+  "created_at": "2026-05-13T23:17:00+03:00",
+  "updated_at": "2026-05-13T23:17:00+03:00",
+  "references": [
+    {
+      "type": "conversation",
+      "id": "20f00ab5-de23-4773-ba3f-986f6d72f9df",
+      "description": "ISV architecture proposal and user approval"
+    },
+    {
+      "type": "file",
+      "path": "c:/Users/bolas/Herd/test-models/.agents/knowledge/ISV_PROJECT_PLAN.md",
+      "description": "Project-local copy of the finalized plan"
+    }
+  ]
+}

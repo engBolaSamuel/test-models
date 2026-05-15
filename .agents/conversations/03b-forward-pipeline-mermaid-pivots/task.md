@@ -1,0 +1,21 @@
+# Phase 3 Tasks
+
+- [ ] 1. Create `GenerateMermaidAction` and tests
+  - [x] 1.1 Generate action class
+  - [x] 1.2 Write tests for table/column generation
+  - [x] 1.3 Implement table/column logic
+  - [x] 1.4 Write tests for FK/Pivot relationships
+  - [x] 1.5 Implement relationship logic
+- [ ] 2. Create `MermaidPreview` component and view
+  - [x] 2.1 Generate Livewire component
+  - [x] 2.2 Create Blade view with Alpine.js
+  - [x] 2.3 Implement Step A (Manual Generate button)
+  - [x] 2.4 Implement Step B (Auto-update on schema-updated)
+- [ ] 3. Update `app.js` and layout
+  - [x] 3.1 Configure Mermaid in `app.js`
+  - [x] 3.2 Add Alpine component to `app.js`
+  - [x] 3.3 Update `schema-designer.blade.php` to 4 panels
+- [x] 4. Verification and Polish
+  - [x] 4.1 Run full test suite
+  - [x] 4.2 Comment out Step B functionality (Code + Tests marked `todo()`)
+  - [x] 4.3 Verify manual button still works after commenting
