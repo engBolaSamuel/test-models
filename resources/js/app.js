@@ -1,5 +1,6 @@
 import './bootstrap';
 import mermaid from 'mermaid';
+import sortable from '@alpinejs/sortable';
 
 mermaid.initialize({
     startOnLoad: false,
@@ -12,6 +13,8 @@ mermaid.initialize({
 window.mermaidInstance = mermaid;
 
 document.addEventListener('alpine:init', () => {
+    window.Alpine.plugin(sortable);
+    
     Alpine.data('mermaidPreview', () => ({
         hasDiagram: false,
         async renderDiagram() {

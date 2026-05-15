@@ -97,13 +97,21 @@
         @endif
 
         {{-- Column List --}}
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto relative transition-opacity duration-200" wire:loading.class="opacity-50 pointer-events-none" wire:sortable="reorder">
             @forelse ($columns as $column)
                 <div
+                    wire:sortable.item="{{ $column->id }}"
                     wire:key="column-{{ $column->id }}"
                     class="group flex items-center gap-3 px-4 py-2.5 border-b border-gray-100 hover:bg-gray-50 transition-colors duration-150
                         {{ $editingColumnId === $column->id ? 'bg-indigo-50' : '' }}"
                 >
+                    {{-- Drag Handle --}}
+                    <div wire:sortable.handle class="cursor-grab text-gray-300 hover:text-gray-500 py-1 pr-1">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                        </svg>
+                    </div>
+
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center gap-2">
                             <span class="text-sm font-medium text-gray-800">{{ $column->name }}</span>

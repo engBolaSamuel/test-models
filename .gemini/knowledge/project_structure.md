@@ -8,34 +8,318 @@ This file serves as a persistent reference for the project's layout, specificall
 |- .agents/
 |- .gemini/
 |- app/
+  |- Actions/
+    |- Mermaid/
+      |- GenerateMermaidAction.php
+      |- ParseMermaidAction.php
+    |- Schema/
+      |- CreateColumnAction.php
+      |- CreatePivotRelationshipAction.php
+      |- CreateTableAction.php
+      |- DeleteColumnAction.php
+      |- DeletePivotRelationshipAction.php
+      |- DeleteTableAction.php
+      |- ExportMigrationAction.php
+      |- ReorderColumnsAction.php
+      |- UpdateColumnAction.php
+      |- UpdatePivotRelationshipAction.php
+      |- UpdateTableAction.php
+  |- Console/
+    |- Commands/
+  |- DTOs/
+    |- ColumnDefinition.php
+    |- PivotDefinition.php
+    |- TableDefinition.php
+  |- Enums/
+    |- ColumnType.php
+    |- IndexType.php
   |- Http/
     |- Controllers/
+      |- Auth/
+        |- AuthenticatedSessionController.php
+        |- ConfirmablePasswordController.php
+        |- EmailVerificationNotificationController.php
+        |- EmailVerificationPromptController.php
+        |- NewPasswordController.php
+        |- PasswordController.php
+        |- PasswordResetLinkController.php
+        |- RegisteredUserController.php
+        |- VerifyEmailController.php
       |- Controller.php
+      |- ProfileController.php
+    |- Requests/
+      |- Auth/
+        |- LoginRequest.php
+      |- ProfileUpdateRequest.php
+  |- Livewire/
+    |- Forms/
+      |- ColumnForm.php
+      |- PivotForm.php
+      |- TableForm.php
+    |- ColumnEditor.php
+    |- Dashboard.php
+    |- MermaidEditor.php
+    |- MermaidPreview.php
+    |- PivotManager.php
+    |- SchemaDesigner.php
+    |- TablePanel.php
   |- Models/
-    |- Post.php
+    |- PivotRelationship.php
+    |- Project.php
+    |- ProjectTable.php
+    |- TableColumn.php
     |- User.php
+  |- Policies/
+    |- ProjectPolicy.php
   |- Providers/
     |- AppServiceProvider.php
+  |- Services/
+    |- SchemaSyncService.php
+  |- View/
+    |- Components/
+      |- AppLayout.php
+      |- GuestLayout.php
 |- bootstrap/
+  |- cache/
+    |- .gitignore/ [Ignored Content]
+    |- packages.php
+    |- services.php
+  |- app.php
+  |- providers.php
 |- config/
+  |- app.php
+  |- auth.php
+  |- cache.php
+  |- database.php
+  |- filesystems.php
+  |- logging.php
+  |- mail.php
+  |- queue.php
+  |- services.php
+  |- session.php
 |- database/
+  |- factories/
+    |- PivotRelationshipFactory.php
+    |- ProjectFactory.php
+    |- ProjectTableFactory.php
+    |- TableColumnFactory.php
+    |- UserFactory.php
+  |- migrations/
+    |- 0001_01_01_000000_create_users_table.php
+    |- 0001_01_01_000001_create_cache_table.php
+    |- 0001_01_01_000002_create_jobs_table.php
+    |- 2026_05_13_125934_create_projects_table.php
+    |- 2026_05_13_125935_create_project_tables_table.php
+    |- 2026_05_13_132321_create_table_columns_table.php
+    |- 2026_05_14_145630_enhance_table_columns_table.php
+    |- 2026_05_14_145846_create_pivot_relationships_table.php
+  |- seeders/
+    |- DatabaseSeeder.php
+  |- .gitignore/ [Ignored Content]
+|- node_modules/ [Ignored Content]
 |- public/
+  |- build/
+    |- assets/
+      |- app-BawZ2-cj.css
+      |- app-IKoUFF3V.js
+      |- arc-mRGUese_.js
+      |- architecture-7EHR7CIX-CDyS6a8U.js
+      |- architectureDiagram-3BPJPVTR-D4gbl5KE.js
+      |- blockDiagram-GPEHLZMM-Co4iHyvB.js
+      |- c4Diagram-AAUBKEIU-DMdtYkun.js
+      |- channel-CvsSSPPF.js
+      |- chunk-2J33WTMH-Dpk4XSHD.js
+      |- chunk-4BX2VUAB-TDkwz5xg.js
+      |- chunk-55IACEB6-Dg07UtNG.js
+      |- chunk-727SXJPM-QML5CJ2J.js
+      |- chunk-AQP2D5EJ-BDwUVHA6.js
+      |- chunk-FMBD7UC4-CKiiZqNq.js
+      |- chunk-ND2GUHAM-408SxaSA.js
+      |- chunk-QZHKN3VN-D04sI8Wp.js
+      |- classDiagram-4FO5ZUOK-C9p9C4gs.js
+      |- classDiagram-v2-Q7XG4LA2-D5T38ePY.js
+      |- cose-bilkent-S5V4N54A-DyRLOros.js
+      |- cytoscape.esm-JN4ZVIMQ.js
+      |- dagre-BeVqeql8.js
+      |- dagre-BM42HDAG-DDjfekBX.js
+      |- defaultLocale-DqkySoAM.js
+      |- diagram-2AECGRRQ-BmX03Alc.js
+      |- diagram-5GNKFQAL-bX7bnhCt.js
+      |- diagram-KO2AKTUF-CEyXOYeV.js
+      |- diagram-LMA3HP47-DMmKu2gY.js
+      |- diagram-OG6HWLK6-dJ69sD3R.js
+      |- erDiagram-TEJ5UH35-DflHbBrl.js
+      |- eventmodeling-FCH6USID-qu4iZEf_.js
+      |- flowDiagram-I6XJVG4X-DjxEknAM.js
+      |- ganttDiagram-6RSMTGT7-NqaxtVok.js
+      |- gitGraph-WXDBUCRP-BoRktBA9.js
+      |- gitGraphDiagram-PVQCEYII-BMUghHcg.js
+      |- graphlib-BGLtfA99.js
+      |- info-J43DQDTF-BGPosYzt.js
+      |- infoDiagram-5YYISTIA-BxnqtjlL.js
+      |- init-DHh9lTda.js
+      |- ishikawaDiagram-YF4QCWOH-tJ8nE5Ub.js
+      |- journeyDiagram-JHISSGLW-tbLL-alP.js
+      |- kanban-definition-UN3LZRKU-CtXNsLB_.js
+      |- katex-hSg1_ICP.js
+      |- linear-D_gzNhxL.js
+      |- mermaid-parser.core-BIlEu7xT.js
+      |- mindmap-definition-RKZ34NQL-C-0SA_RG.js
+      |- ordinal-D-IYv5s5.js
+      |- packet-YPE3B663-yQQTekTX.js
+      |- pie-LRSECV5Y-G1lmSAo6.js
+      |- pieDiagram-4H26LBE5-CS-H3icV.js
+      |- quadrantDiagram-W4KKPZXB-Y7Bu0xdA.js
+      |- radar-GUYGQ44K-L2p9MAnw.js
+      |- requirementDiagram-4Y6WPE33-vLOOZyTt.js
+      |- sankeyDiagram-5OEKKPKP-BqMQqu2d.js
+      |- sequenceDiagram-3UESZ5HK-BHqncuNE.js
+      |- stateDiagram-AJRCARHV-DER9YUGb.js
+      |- stateDiagram-v2-BHNVJYJU-CaGWICQA.js
+      |- timeline-definition-PNZ67QCA-XTql0bHF.js
+      |- treemap-LRROVOQU-BxutloHM.js
+      |- treeView-BLDUP644-fX08Ziw3.js
+      |- vennDiagram-CIIHVFJN-wYjWtQuU.js
+      |- wardley-L42UT6IY-Czijs5o0.js
+      |- wardleyDiagram-YWT4CUSO-DMe7C0PX.js
+      |- xychartDiagram-2RQKCTM6-BgcGl--7.js
+    |- manifest.json
+  |- .htaccess
+  |- favicon.ico
+  |- index.php
+  |- robots.txt
 |- resources/
+  |- css/
+    |- app.css
+  |- js/
+    |- app.js
+    |- bootstrap.js
+  |- views/
+    |- auth/
+      |- confirm-password.blade.php
+      |- forgot-password.blade.php
+      |- login.blade.php
+      |- register.blade.php
+      |- reset-password.blade.php
+      |- verify-email.blade.php
+    |- components/
+      |- application-logo.blade.php
+      |- auth-session-status.blade.php
+      |- danger-button.blade.php
+      |- dropdown-link.blade.php
+      |- dropdown.blade.php
+      |- input-error.blade.php
+      |- input-label.blade.php
+      |- modal.blade.php
+      |- nav-link.blade.php
+      |- primary-button.blade.php
+      |- responsive-nav-link.blade.php
+      |- secondary-button.blade.php
+      |- text-input.blade.php
+    |- layouts/
+      |- app.blade.php
+      |- guest.blade.php
+      |- navigation.blade.php
+    |- livewire/
+      |- column-editor.blade.php
+      |- dashboard.blade.php
+      |- mermaid-editor.blade.php
+      |- mermaid-preview.blade.php
+      |- pivot-manager.blade.php
+      |- schema-designer.blade.php
+      |- table-panel.blade.php
+    |- profile/
+      |- partials/
+        |- delete-user-form.blade.php
+        |- update-password-form.blade.php
+        |- update-profile-information-form.blade.php
+      |- edit.blade.php
+    |- dashboard.blade.php
+    |- welcome.blade.php
 |- routes/
+  |- auth.php
+  |- console.php
+  |- web.php
+|- scratch/
+  |- generate_tree.ps1
 |- storage/
+  |- app/
+  |- framework/ [Ignored Content]
+  |- logs/
 |- tests/
-|- vendor/ [Ignored]
+  |- Feature/
+    |- Actions/
+      |- CreateColumnActionTest.php
+      |- CreatePivotRelationshipActionTest.php
+      |- CreateTableActionTest.php
+      |- DeleteColumnActionTest.php
+      |- DeletePivotRelationshipActionTest.php
+      |- DeleteTableActionTest.php
+      |- GenerateMermaidActionTest.php
+      |- ParseMermaidActionTest.php
+      |- UpdateColumnActionTest.php
+      |- UpdatePivotRelationshipActionTest.php
+      |- UpdateTableActionTest.php
+    |- Auth/
+      |- AuthenticationTest.php
+      |- EmailVerificationTest.php
+      |- PasswordConfirmationTest.php
+      |- PasswordResetTest.php
+      |- PasswordUpdateTest.php
+      |- RegistrationTest.php
+    |- Livewire/
+      |- ColumnEditorTest.php
+      |- DashboardTest.php
+      |- MermaidEditorTest.php
+      |- MermaidPreviewTest.php
+      |- PivotManagerTest.php
+      |- SchemaDesignerTest.php
+      |- TablePanelTest.php
+    |- Models/
+      |- PivotRelationshipTest.php
+      |- ProjectTableTest.php
+      |- ProjectTest.php
+      |- TableColumnTest.php
+    |- Policies/
+      |- ProjectPolicyTest.php
+    |- Services/
+      |- SchemaSyncServiceTest.php
+    |- ExampleTest.php
+    |- ProfileTest.php
+  |- Unit/
+    |- DTOs/
+      |- ColumnDefinitionTest.php
+      |- PivotDefinitionTest.php
+      |- TableDefinitionTest.php
+    |- Enums/
+      |- ColumnTypeTest.php
+      |- IndexTypeTest.php
+    |- ExampleTest.php
+  |- Pest.php
+  |- TestCase.php
+|- vendor/ [Ignored Content]
+|- .editorconfig
 |- .env
-|- .geminiignore
+|- .env.example
+|- .geminiignore/ [Ignored Content]
+|- .gitattributes/ [Ignored Content]
+|- .gitignore/ [Ignored Content]
+|- .npmrc
+|- .nvmrc
+|- .styleci.yml
 |- artisan
+|- boost.json
+|- CHANGELOG.md
 |- composer.json
+|- composer.lock
+|- GEMINI.md
+|- herd.yml
+|- package-lock.json
 |- package.json
+|- phpunit.xml
+|- postcss.config.js
 |- PROJECT_STRUCTURE.md
 |- README.md
+|- tailwind.config.js
 |- vite.config.js
 ```
-
-## Context
-- **Framework**: Laravel 13
-- **Project Name**: test-models
-- **Purpose**: A project for testing Laravel models and relationships.

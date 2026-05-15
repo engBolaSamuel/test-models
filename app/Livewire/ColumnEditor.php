@@ -96,6 +96,15 @@ class ColumnEditor extends Component
         $this->resetForm();
     }
 
+    public function reorder(array $orderedIds): void
+    {
+        $table = $this->getSelectedTable();
+        $action = new \App\Actions\Schema\ReorderColumnsAction;
+        $action->execute($table, $orderedIds);
+
+        $this->dispatch('schema-updated', projectId: $this->project->id);
+    }
+
     #[On('schema-updated')]
     public function refreshColumns(): void
     {

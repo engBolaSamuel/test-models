@@ -372,53 +372,55 @@ All UI panels re-render from DB state
 
 ---
 
-### Phase 3: Forward Pipeline — Database to Mermaid ➡️
+### Phase 3: Forward Pipeline — Database to Mermaid ➡️ [COMPLETED]
 
-**Goal**: Live ER diagram that auto-updates when schema changes.
+**Goal**:
+1. **Step A** (active): On-demand ERD — user clicks "View DB as ERD" button to generate the diagram.
+2. **Step B** (preserved): Live auto-update — diagram refreshes automatically when schema changes (built, tested, but commented out for next release).
 
 | Step | Task | Verification |
 |---|---|---|
-| 3.1 | Create `GenerateMermaidAction` | Pest: known data → expected DSL |
-| 3.2 | Include FK relationships as lines in DSL | FK columns produce arrows |
-| 3.3 | Include M2M pivot relationships as lines in DSL | Pivot relationships produce `}o--o{` lines |
-| 3.4 | Create `MermaidPreview` Livewire component | Browser: diagram appears |
-| 3.5 | Wire `schema-updated` → `MermaidPreview` | UI change → diagram updates live |
-| 3.6 | Dark theme styling | Visual inspection |
+| 3.1 | [x] Create `GenerateMermaidAction` | Pest: known data → expected DSL |
+| 3.2 | [x] Include FK relationships as lines in DSL | FK columns produce arrows |
+| 3.3 | [x] Include M2M pivot relationships as entities | Pivot tables produce entities and `\|\|--o{` lines |
+| 3.4 | [x] Create `MermaidPreview` Livewire component | Browser: diagram appears on button click |
+| 3.5 | [x] Wire `schema-updated` → `MermaidPreview` | Preserved as `// TODO` for future release |
+| 3.6 | [x] Dark theme styling | Visual inspection |
 
 **Gate**: Forward sync complete. `php artisan test` — all green.
 
 ---
 
-### Phase 4: Reverse Pipeline — Mermaid to Database ⬅️
+### Phase 4: Reverse Pipeline — Mermaid to Database ⬅️ [COMPLETED]
 
 **Goal**: Editing raw Mermaid DSL syncs changes back to database and UI.
 
 | Step | Task | Verification |
 |---|---|---|
-| 4.1 | Build `ParseMermaidAction` (ER subset parser) | Pest: parse DSL → `TableDefinition[]` + `PivotDefinition[]` |
-| 4.2 | Build `SchemaDiff` DTO | Unit test: diff detects changes |
-| 4.3 | Build `SchemaSyncService.diffAndApply()` | Feature test: DSL changes → DB updated |
-| 4.4 | Create `MermaidEditor` component (textarea + CodeMirror) | Browser: edit DSL text |
-| 4.5 | Wire "Apply" → parse → sync → `schema-updated` | Edit DSL → all panels update |
-| 4.6 | Inline parse error display | Invalid DSL shows error |
+| 4.1 | [x] Build `ParseMermaidAction` (ER subset parser) | Pest: parse DSL → `TableDefinition[]` + `PivotDefinition[]` |
+| 4.2 | [x] Build `SchemaDiff` DTO | Unit test: diff detects changes |
+| 4.3 | [x] Build `SchemaSyncService.diffAndApply()` | Feature test: DSL changes → DB updated |
+| 4.4 | [x] Create `MermaidEditor` component (textarea + CodeMirror) | Browser: edit DSL text |
+| 4.5 | [x] Wire "Apply" → parse → sync → `schema-updated` | Edit DSL → all panels update |
+| 4.6 | [x] Inline parse error display | Invalid DSL shows error |
 
 **Gate**: Bidirectional sync complete. `php artisan test` — all green.
 
 ---
 
-### Phase 5: Polish & DX 💎
+### Phase 5: Polish & DX 💎 [COMPLETED]
 
 **Goal**: Production-quality UX and developer experience.
 
 | Step | Task | Verification |
 |---|---|---|
-| 5.1 | Column drag-and-drop reordering | Drag → `position` updates |
-| 5.2 | Undo support (command history) | Click undo → reverts |
-| 5.3 | Export Mermaid DSL as `.mmd` file | Download works |
-| 5.4 | Export schema as Laravel migration PHP | Valid migration generated |
-| 5.5 | UI polish: loading states, transitions, empty states | Visual review |
-| 5.6 | Demo seed in `DatabaseSeeder` | `migrate:fresh --seed` shows data |
-| 5.7 | Responsive design pass | Mobile layout works |
+| 5.1 | [x] Column drag-and-drop reordering | Drag → `position` updates |
+| 5.2 | [x] Undo support (command history) | Click undo → reverts |
+| 5.3 | [x] Export Mermaid DSL as `.mmd` file | Download works |
+| 5.4 | [x] Export schema as Laravel migration PHP | Valid migration generated |
+| 5.5 | [x] UI polish: loading states, transitions, empty states | Visual review |
+| 5.6 | [x] Demo seed in `DatabaseSeeder` | `migrate:fresh --seed` shows data |
+| 5.7 | [x] Responsive design pass | Mobile layout works |
 
 **Gate**: ISV is feature-complete. Full test suite green.
 

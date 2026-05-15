@@ -20,7 +20,7 @@
     </div>
 
     {{-- Table List --}}
-    <div class="flex-1 overflow-y-auto">
+    <div class="flex-1 overflow-y-auto" wire:loading.class="opacity-50 pointer-events-none">
         @forelse ($tables as $table)
             <div
                 wire:key="table-{{ $table->id }}"
