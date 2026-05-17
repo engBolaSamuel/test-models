@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Schema\CreateColumnAction;
 use App\Actions\Schema\DeleteColumnAction;
+use App\Actions\Schema\ReorderColumnsAction;
 use App\Actions\Schema\UpdateColumnAction;
 use App\Enums\ColumnType;
 use App\Enums\IndexType;
@@ -99,7 +100,7 @@ class ColumnEditor extends Component
     public function reorder(array $orderedIds): void
     {
         $table = $this->getSelectedTable();
-        $action = new \App\Actions\Schema\ReorderColumnsAction;
+        $action = new ReorderColumnsAction;
         $action->execute($table, $orderedIds);
 
         $this->dispatch('schema-updated', projectId: $this->project->id);

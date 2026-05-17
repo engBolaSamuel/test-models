@@ -17,7 +17,7 @@ it('renders the component', function () {
 it('applies dsl and triggers schema update', function () {
     $project = Project::factory()->create();
 
-    $dsl = <<<EOF
+    $dsl = <<<'EOF'
 erDiagram
     users {
         bigint id PK

@@ -5,6 +5,7 @@ namespace App\Actions\Mermaid;
 use App\Enums\ColumnType;
 use App\Enums\IndexType;
 use App\Models\Project;
+use Illuminate\Support\Str;
 
 class GenerateMermaidAction
 {
@@ -24,25 +25,25 @@ class GenerateMermaidAction
 
         foreach ($project->tables as $table) {
             $lines[] = "    {$table->name} {";
-            
+
             foreach ($table->columns as $column) {
                 $type = $this->mapColumnType($column->type);
                 $modifiers = [];
-                
+
                 if ($column->index_type === IndexType::Primary) {
                     $modifiers[] = 'PK';
                 }
-                
+
                 if ($column->fk_table && $column->fk_column) {
                     $modifiers[] = 'FK';
                     $fkLines[] = "    {$column->fk_table} ||--o{ {$table->name} : \"{$column->name}\"";
                 }
-                
-                $modifierStr = empty($modifiers) ? '' : ' ' . implode(',', $modifiers);
+
+                $modifierStr = empty($modifiers) ? '' : ' '.implode(',', $modifiers);
                 $lines[] = "        {$type} {$column->name}{$modifierStr}";
             }
-            
-            $lines[] = "    }";
+
+            $lines[] = '    }';
         }
 
         foreach ($fkLines as $fkLine) {
@@ -53,22 +54,22 @@ class GenerateMermaidAction
             $t1Name = $pivot->tableOne->name;
             $t2Name = $pivot->tableTwo->name;
             $pivotName = $pivot->pivot_table_name;
-            
+
             $lines[] = "    {$pivotName} {";
-            
-            $t1Fk = \Illuminate\Support\Str::singular($t1Name) . '_id';
-            $t2Fk = \Illuminate\Support\Str::singular($t2Name) . '_id';
-            
+
+            $t1Fk = Str::singular($t1Name).'_id';
+            $t2Fk = Str::singular($t2Name).'_id';
+
             $lines[] = "        bigint {$t1Fk} FK";
             $lines[] = "        bigint {$t2Fk} FK";
-            
+
             if ($pivot->with_timestamps) {
-                $lines[] = "        timestamp created_at";
-                $lines[] = "        timestamp updated_at";
+                $lines[] = '        timestamp created_at';
+                $lines[] = '        timestamp updated_at';
             }
-            
-            $lines[] = "    }";
-            
+
+            $lines[] = '    }';
+
             $lines[] = "    {$t1Name} ||--o{ {$pivotName} : \"has\"";
             $lines[] = "    {$t2Name} ||--o{ {$pivotName} : \"has\"";
         }

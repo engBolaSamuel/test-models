@@ -1,7 +1,7 @@
 <div class="flex flex-col h-full">
     @if ($selectedTable)
         {{-- Header --}}
-        <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+        <div class="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-gray-50 z-10">
             <div>
                 <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Columns</h3>
                 <p class="text-xs text-gray-400 mt-0.5">{{ $selectedTable->name }}</p>

@@ -1,6 +1,6 @@
 <div class="flex flex-col h-full">
     {{-- Header --}}
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10">
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Relationships</h3>
         @if (! $showAddForm && ! $editingPivotId)
             <x-primary-button wire:click="showAdd" class="text-xs !px-3 !py-1.5" id="add-pivot-button">

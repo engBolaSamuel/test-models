@@ -18,7 +18,7 @@ class MermaidPreview extends Component
     // #[On('schema-updated')]
     public function generateDiagram(): void
     {
-        $action = new GenerateMermaidAction();
+        $action = new GenerateMermaidAction;
         $this->mermaidDsl = $action->execute($this->project);
     }
 

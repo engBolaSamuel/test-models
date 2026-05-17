@@ -75,7 +75,7 @@
 
         {{-- Right Section: Mermaid Preview or Editor --}}
         <div class="w-full lg:w-1/2 border border-gray-200 lg:border-none rounded-lg lg:rounded-none bg-gray-900 overflow-hidden flex flex-col h-96 lg:h-auto" id="panel-mermaid">
-            <div class="flex items-center justify-center p-2 bg-gray-950 border-b border-gray-800 shrink-0">
+            <div class="flex items-center justify-center p-2 bg-gray-950 border-b border-gray-800 shrink-0 sticky top-0 z-30">
                 <div class="bg-gray-900 p-1 rounded-lg flex space-x-1">
                     <button 
                         wire:click="$set('rightPanelMode', 'preview')"
@@ -100,7 +100,7 @@
                 </div>
             </div>
             
-            <div class="flex-1 overflow-y-auto relative min-h-0">
+            <div class="flex-1 overflow-hidden relative min-h-0">
                 @if($rightPanelMode === 'preview')
                     <livewire:mermaid-preview :project="$project" />
                 @else

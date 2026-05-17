@@ -38,5 +38,5 @@ it('auto-generates pivot table name when empty', function () {
         'with_timestamps' => true,
     ]);
 
-    expect($pivot->pivot_table_name)->toBe('roles_users');
+    expect($pivot->pivot_table_name)->toBe('role_user');
 });

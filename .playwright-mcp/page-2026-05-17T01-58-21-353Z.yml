@@ -1,0 +1,64 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link [ref=e8] [cursor=pointer]:
+          - /url: https://test-models.test/dashboard
+          - img [ref=e9]
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: https://test-models.test/dashboard
+      - button "Test User" [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: Test User
+        - img [ref=e19]
+  - banner [ref=e21]:
+    - generic [ref=e23]:
+      - link [ref=e24] [cursor=pointer]:
+        - /url: https://test-models.test/dashboard
+        - img [ref=e25]
+      - heading "Test Project" [level=2] [ref=e27]
+      - generic [ref=e28]:
+        - button "Export .mmd" [ref=e29] [cursor=pointer]:
+          - img [ref=e30]
+          - text: Export .mmd
+        - button "Export Migration" [ref=e32] [cursor=pointer]:
+          - img [ref=e33]
+          - text: Export Migration
+  - main [ref=e35]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - heading "Tables" [level=3] [ref=e43]
+              - generic [ref=e44]:
+                - textbox "New table name..." [ref=e45]
+                - button "Add" [ref=e46] [cursor=pointer]
+            - generic [ref=e80] [cursor=pointer]:
+              - generic [ref=e81]: users
+              - text: 0 cols
+          - generic [ref=e52]:
+            - generic [ref=e82]:
+              - generic [ref=e83]:
+                - heading "Columns" [level=3] [ref=e84]
+                - paragraph [ref=e85]: users
+              - button "+ Add Column" [ref=e86] [cursor=pointer]
+            - generic [ref=e88]:
+              - paragraph [ref=e89]: No columns yet.
+              - paragraph [ref=e90]: Click "+ Add Column" to define your schema.
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - heading "Relationships" [level=3] [ref=e61]
+            - button "+ Add M2M" [ref=e62] [cursor=pointer]
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: No many-to-many relationships yet.
+            - paragraph [ref=e66]: Click "+ Add M2M" to define one.
+      - generic [ref=e67]:
+        - generic [ref=e69]:
+          - button "Visual Diagram" [ref=e70] [cursor=pointer]
+          - button "Code Editor" [ref=e71] [cursor=pointer]
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "ER Diagram" [level=3] [ref=e75]
+            - button "View DB as ERD" [active] [ref=e76] [cursor=pointer]
+          - document [ref=e91]:
+            - paragraph [ref=e101]: users

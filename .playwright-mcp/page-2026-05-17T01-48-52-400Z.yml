@@ -1,0 +1,87 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link [ref=e8] [cursor=pointer]:
+          - /url: https://test-models.test/dashboard
+          - img [ref=e9]
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: https://test-models.test/dashboard
+      - button "Test User" [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: Test User
+        - img [ref=e19]
+  - banner [ref=e21]:
+    - generic [ref=e23]:
+      - link [ref=e24] [cursor=pointer]:
+        - /url: https://test-models.test/dashboard
+        - img [ref=e25]
+      - heading "Test Project" [level=2] [ref=e27]
+      - generic [ref=e28]:
+        - button "Export .mmd" [ref=e29] [cursor=pointer]:
+          - img [ref=e30]
+          - text: Export .mmd
+        - button "Export Migration" [ref=e32] [cursor=pointer]:
+          - img [ref=e33]
+          - text: Export Migration
+  - main [ref=e35]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - heading "Tables" [level=3] [ref=e43]
+              - generic [ref=e44]:
+                - textbox "New table name..." [ref=e45]
+                - button "Add" [ref=e46] [cursor=pointer]
+            - generic [ref=e47]:
+              - generic [ref=e165] [cursor=pointer]:
+                - generic [ref=e166]: roles
+                - text: 0 cols
+              - generic [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: users
+                - text: 1 cols
+          - generic [ref=e133]:
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - heading "Columns" [level=3] [ref=e169]
+                - paragraph [ref=e170]: roles
+              - button "+ Add Column" [ref=e171] [cursor=pointer]
+            - generic [ref=e173]:
+              - paragraph [ref=e174]: No columns yet.
+              - paragraph [ref=e175]: Click "+ Add Column" to define your schema.
+        - generic [ref=e139]:
+          - heading "Relationships" [level=3] [ref=e141]
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e179]:
+                - generic [ref=e180]: Table One
+                - combobox "Table One" [ref=e181]:
+                  - option "Select a table..." [selected]
+                  - option "roles"
+                  - option "users"
+              - generic [ref=e182]:
+                - generic [ref=e183]: Table Two
+                - combobox "Table Two" [ref=e184]:
+                  - option "Select a table..."
+                  - option "roles" [selected]
+                  - option "users"
+              - generic [ref=e185]:
+                - generic [ref=e186]: Pivot Table Name
+                - textbox "Pivot Table Name" [ref=e187]:
+                  - /placeholder: Auto-generated if empty
+              - generic [ref=e189]:
+                - checkbox "Include timestamps" [checked] [ref=e190]
+                - text: Include timestamps
+            - generic [ref=e191]:
+              - button "Cancel" [ref=e192] [cursor=pointer]
+              - button "Create" [ref=e193] [cursor=pointer]
+          - generic [ref=e144]:
+            - paragraph [ref=e145]: No many-to-many relationships yet.
+            - paragraph [ref=e146]: Click "+ Add M2M" to define one.
+      - generic [ref=e67]:
+        - generic [ref=e69]:
+          - button "Visual Diagram" [ref=e70] [cursor=pointer]
+          - button "Code Editor" [ref=e71] [cursor=pointer]
+        - generic [ref=e159]:
+          - heading "ER Diagram" [level=3] [ref=e160]
+          - button "View DB as ERD" [ref=e161] [cursor=pointer]

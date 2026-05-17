@@ -447,3 +447,14 @@ All UI panels re-render from DB state
 ## 8. Incremental Gate Rule
 
 > **No phase begins until the previous phase's tests are 100% green and browser verification passes.**
+
+---
+
+### Phase 6: Laravel 13.x Naming Convention Compliance 💎 [COMPLETED]
+
+**Goal**: Ensure the project absolutely complies with and automatically recognizes the Laravel 13.x naming conventions universally (with pivot tables in many-to-many relationships being a key example).
+
+| Step | Task | Verification |
+|---|---|---|
+| 6.1 | [x] Editing the business logic to absolutely comply with the Laravel 13.x naming conventions across the board, especially in the pivot table in many-to-many relationships. | Logic strictly generates model, table, and pivot names according to Laravel 13.x conventions. |
+| 6.2 | [x] Editing the business logic to recognize automatically the Laravel 13.x naming conventions. For example, recognizing a pivot table just by naming it after the Laravel 13.x naming convention. | Parsers and syncing logic automatically identify structures (like pivots) based on Laravel 13.x naming rules. |

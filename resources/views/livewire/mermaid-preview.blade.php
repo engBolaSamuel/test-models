@@ -1,5 +1,5 @@
 <div class="h-full flex flex-col bg-gray-900 text-gray-200">
-    <div class="p-4 border-b border-gray-700 flex items-center justify-between shrink-0">
+    <div class="p-4 border-b border-gray-700 flex items-center justify-between shrink-0 sticky top-0 bg-gray-900 z-20">
         <h3 class="font-semibold">ER Diagram</h3>
         <button wire:click="generateDiagram" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded transition-colors duration-150">
             View DB as ERD

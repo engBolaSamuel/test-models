@@ -1,0 +1,55 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md", ".opencode/knowledge/architecture.md", ".opencode/knowledge/patterns.md", ".opencode/knowledge/commands.md", ".agents/knowledge/ISV_PROJECT_PLAN.md"],
+  "snapshot": true,
+  "compaction": { "auto": true, "tail_turns": 12 },
+  "mcp": {
+    "laravel-boost": {
+      "type": "local",
+      "command": ["php", "artisan", "boost:mcp"],
+      "enabled": true
+    },
+    "herd": {
+      "type": "local",
+      "command": ["C:\\Users\\bolas\\.config\\herd\\bin\\php85\\php.exe", "-d", "display_errors=stderr", "-q", "C:\\Users\\bolas\\.config\\herd\\bin\\herd-mcp.phar"],
+      "enabled": true,
+      "env": {
+        "SITE_PATH": "C:\\Users\\bolas\\Herd\\test-models\\artisan"
+      }
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp@latest"],
+      "enabled": true,
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "github-mcp-server": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "enabled": true,
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}",
+        "NODE_OPTIONS": "--dns-result-order=ipv4first"
+      }
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "enabled": true,
+      "env": {
+        "MEMORY_FILE_PATH": ".opencode/memory.jsonl"
+      }
+    }
+  },
+  "tool_output": {
+    "max_lines": 100,
+    "max_bytes": 4096
+  }
+}

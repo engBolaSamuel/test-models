@@ -10,13 +10,11 @@ use App\Actions\Schema\DeleteColumnAction;
 use App\Actions\Schema\DeletePivotRelationshipAction;
 use App\Actions\Schema\DeleteTableAction;
 use App\Actions\Schema\UpdateColumnAction;
-use App\DTOs\ColumnDefinition;
 use App\DTOs\PivotDefinition;
 use App\DTOs\SchemaDiff;
 use App\DTOs\TableDefinition;
 use App\Models\Project;
 use App\Models\ProjectTable;
-use App\Models\TableColumn;
 use Illuminate\Support\Facades\DB;
 
 class SchemaSyncService
@@ -35,24 +33,24 @@ class SchemaSyncService
     public function diffAndApply(Project $project, string $dsl): SchemaDiff
     {
         $parsed = $this->parseAction->execute($dsl);
-        
+
         $diff = $this->computeDiff($project, $parsed['tables'], $parsed['pivots']);
-        
+
         $this->applyDiff($project, $diff);
 
         return $diff;
     }
 
     /**
-     * @param array<int, TableDefinition> $parsedTables
-     * @param array<int, PivotDefinition> $parsedPivots
+     * @param  array<int, TableDefinition>  $parsedTables
+     * @param  array<int, PivotDefinition>  $parsedPivots
      */
     protected function computeDiff(Project $project, array $parsedTables, array $parsedPivots): SchemaDiff
     {
         $project->load(['tables.columns', 'pivotRelationships']);
 
         $dbTables = $project->tables->keyBy('name');
-        
+
         $tablesToCreate = [];
         $tablesToDelete = [];
         $columnsToCreate = [];
@@ -61,7 +59,7 @@ class SchemaSyncService
 
         // Identify Tables to Create or Update
         foreach ($parsedTables as $parsedTable) {
-            if (!$dbTables->has($parsedTable->name)) {
+            if (! $dbTables->has($parsedTable->name)) {
                 $tablesToCreate[] = $parsedTable;
                 $columnsToCreate[$parsedTable->name] = $parsedTable->columns;
             } else {
@@ -73,7 +71,7 @@ class SchemaSyncService
                 $parsedColNames = [];
                 foreach ($parsedTable->columns as $parsedColumn) {
                     $parsedColNames[] = $parsedColumn->name;
-                    if (!$dbColumns->has($parsedColumn->name)) {
+                    if (! $dbColumns->has($parsedColumn->name)) {
                         $columnsToCreate[$parsedTable->name][] = $parsedColumn;
                     } else {
                         // Compare columns (simplified, assuming we just update all properties)
@@ -84,7 +82,7 @@ class SchemaSyncService
 
                 // Identify Columns to Delete
                 foreach ($dbColumns as $colName => $dbColumn) {
-                    if (!in_array($colName, $parsedColNames)) {
+                    if (! in_array($colName, $parsedColNames)) {
                         $columnsToDelete[$parsedTable->name][] = $colName;
                     }
                 }
@@ -94,7 +92,7 @@ class SchemaSyncService
         // Identify Tables to Delete
         $parsedTableNames = collect($parsedTables)->pluck('name')->toArray();
         foreach ($dbTables as $tableName => $dbTable) {
-            if (!in_array($tableName, $parsedTableNames)) {
+            if (! in_array($tableName, $parsedTableNames)) {
                 $tablesToDelete[] = $tableName;
             }
         }
@@ -107,13 +105,13 @@ class SchemaSyncService
         $parsedPivotNames = [];
         foreach ($parsedPivots as $parsedPivot) {
             $parsedPivotNames[] = $parsedPivot->pivotTableName;
-            if (!$dbPivots->has($parsedPivot->pivotTableName)) {
+            if (! $dbPivots->has($parsedPivot->pivotTableName)) {
                 $pivotsToCreate[] = $parsedPivot;
             }
         }
 
         foreach ($dbPivots as $pivotName => $dbPivot) {
-            if (!in_array($pivotName, $parsedPivotNames)) {
+            if (! in_array($pivotName, $parsedPivotNames)) {
                 $pivotsToDelete[] = $pivotName;
             }
         }

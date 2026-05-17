@@ -1,6 +1,6 @@
 <div class="flex flex-col h-full">
     {{-- Header --}}
-    <div class="p-4 border-b border-gray-200">
+    <div class="p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Tables</h3>
 
         {{-- Add Table Form --}}

@@ -4,6 +4,7 @@ namespace App\Actions\Schema;
 
 use App\Models\PivotRelationship;
 use App\Models\Project;
+use Illuminate\Support\Str;
 
 class CreatePivotRelationshipAction
 {
@@ -18,7 +19,10 @@ class CreatePivotRelationshipAction
             $tableOne = $project->tables()->find($data['table_one_id']);
             $tableTwo = $project->tables()->find($data['table_two_id']);
 
-            $names = [$tableOne->name, $tableTwo->name];
+            $names = [
+                Str::singular($tableOne->name),
+                Str::singular($tableTwo->name),
+            ];
             sort($names);
             $data['pivot_table_name'] = implode('_', $names);
         }

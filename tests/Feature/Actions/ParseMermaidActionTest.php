@@ -1,14 +1,13 @@
 <?php
 
 use App\Actions\Mermaid\ParseMermaidAction;
-use App\DTOs\ColumnDefinition;
 use App\DTOs\PivotDefinition;
 use App\DTOs\TableDefinition;
 use App\Enums\ColumnType;
 use App\Enums\IndexType;
 
 it('parses mermaid ER diagram into tables and pivots', function () {
-    $dsl = <<<EOF
+    $dsl = <<<'EOF'
 erDiagram
     users {
         bigint id PK
@@ -29,7 +28,7 @@ erDiagram
     roles ||--o{ role_user : "has"
 EOF;
 
-    $action = new ParseMermaidAction();
+    $action = new ParseMermaidAction;
     $result = $action->execute($dsl);
 
     expect($result['tables'])->toHaveCount(2)
@@ -53,4 +52,52 @@ EOF;
         ->and($pivot->tableOne)->toBe('users')
         ->and($pivot->tableTwo)->toBe('roles')
         ->and($pivot->withTimestamps)->toBeTrue();
+});
+
+it('automatically recognizes pivot tables by name without relationship lines', function () {
+    $dsl = <<<'EOF'
+erDiagram
+    users {
+        bigint id PK
+    }
+    roles {
+        bigint id PK
+    }
+    role_user {
+        bigint role_id FK
+        bigint user_id FK
+    }
+EOF;
+
+    $action = new ParseMermaidAction;
+    $result = $action->execute($dsl);
+
+    expect($result['tables'])->toHaveCount(2)
+        ->and($result['pivots'])->toHaveCount(1);
+
+    $pivot = $result['pivots'][0];
+    expect($pivot->pivotTableName)->toBe('role_user')
+        ->and($pivot->tableOne)->toBe('roles')
+        ->and($pivot->tableTwo)->toBe('users');
+});
+
+it('infers foreign key table by naming convention when relationship line is missing', function () {
+    $dsl = <<<'EOF'
+erDiagram
+    categories {
+        bigint id PK
+    }
+    products {
+        bigint id PK
+        bigint category_id FK
+    }
+EOF;
+
+    $action = new ParseMermaidAction;
+    $result = $action->execute($dsl);
+
+    $productsTable = collect($result['tables'])->firstWhere('name', 'products');
+    $categoryColumn = collect($productsTable->columns)->firstWhere('name', 'category_id');
+
+    expect($categoryColumn->fkTable)->toBe('categories');
 });

@@ -13,8 +13,11 @@ use Livewire\Component;
 class MermaidEditor extends Component
 {
     public Project $project;
+
     public string $dsl = '';
+
     public ?string $errorMessage = null;
+
     public bool $isDirty = false;
 
     public function mount(Project $project): void
@@ -26,7 +29,7 @@ class MermaidEditor extends Component
     #[On('schema-updated')]
     public function onSchemaUpdated(int $projectId): void
     {
-        if ($this->project->id === $projectId && !$this->isDirty) {
+        if ($this->project->id === $projectId && ! $this->isDirty) {
             $this->refreshDsl();
         }
     }
@@ -43,13 +46,13 @@ class MermaidEditor extends Component
             $syncService->diffAndApply($this->project, $this->dsl);
             $this->errorMessage = null;
             $this->isDirty = false;
-            
+
             // Dispatch both to let UI know it was specifically the editor that caused it
             // and to trigger general schema update hooks.
             $this->dispatch('mermaid-applied', projectId: $this->project->id);
             $this->dispatch('schema-updated', projectId: $this->project->id);
         } catch (Exception $e) {
-            $this->errorMessage = "Failed to parse or apply DSL: " . $e->getMessage();
+            $this->errorMessage = 'Failed to parse or apply DSL: '.$e->getMessage();
         }
     }
 

@@ -49,7 +49,7 @@ it('generates entity block for a single table with columns', function () {
 it('maps column types to correct Mermaid type labels', function () {
     $project = Project::factory()->create();
     $table = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'test_types']);
-    
+
     $types = [
         ColumnType::BigInteger->value => 'bigint',
         ColumnType::Boolean->value => 'bool',
@@ -69,7 +69,7 @@ it('maps column types to correct Mermaid type labels', function () {
     foreach ($types as $enumType => $mermaidLabel) {
         TableColumn::factory()->create([
             'project_table_id' => $table->id,
-            'name' => 'col_' . $mermaidLabel,
+            'name' => 'col_'.$mermaidLabel,
             'type' => ColumnType::from($enumType),
         ]);
     }
@@ -119,7 +119,7 @@ it('generates FK relationship lines for columns with fk_table', function () {
     $project = Project::factory()->create();
     $users = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'users']);
     $posts = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'posts']);
-    
+
     TableColumn::factory()->create([
         'project_table_id' => $posts->id,
         'name' => 'user_id',
@@ -138,7 +138,7 @@ it('generates M2M relationship lines for pivot relationships', function () {
     $project = Project::factory()->create();
     $posts = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'posts']);
     $tags = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'tags']);
-    
+
     PivotRelationship::factory()->create([
         'project_id' => $project->id,
         'table_one_id' => $posts->id,
@@ -164,7 +164,7 @@ it('generates complete DSL with tables, FKs, and pivots', function () {
     $users = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'users']);
     $posts = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'posts']);
     $tags = ProjectTable::factory()->create(['project_id' => $project->id, 'name' => 'tags']);
-    
+
     TableColumn::factory()->create([
         'project_table_id' => $posts->id,
         'name' => 'user_id',
@@ -172,7 +172,7 @@ it('generates complete DSL with tables, FKs, and pivots', function () {
         'fk_table' => 'users',
         'fk_column' => 'id',
     ]);
-    
+
     PivotRelationship::factory()->create([
         'project_id' => $project->id,
         'table_one_id' => $posts->id,

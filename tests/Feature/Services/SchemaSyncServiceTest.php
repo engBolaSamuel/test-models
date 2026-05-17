@@ -1,6 +1,5 @@
 <?php
 
-use App\Actions\Mermaid\ParseMermaidAction;
 use App\Models\Project;
 use App\Models\ProjectTable;
 use App\Services\SchemaSyncService;
@@ -11,7 +10,7 @@ uses(RefreshDatabase::class);
 it('syncs mermaid dsl to database', function () {
     $project = Project::factory()->create();
 
-    $dsl = <<<EOF
+    $dsl = <<<'EOF'
 erDiagram
     users {
         bigint id PK
@@ -47,7 +46,7 @@ EOF;
     /** @var ProjectTable $usersTable */
     $usersTable = $project->tables->firstWhere('name', 'users');
     expect($usersTable->columns)->toHaveCount(3);
-    
+
     $rolesTable = $project->tables->firstWhere('name', 'roles');
     expect($rolesTable->columns)->toHaveCount(2);
 
